@@ -30,7 +30,21 @@
 
 /* _____________ Your Code Here _____________ */
 
-type MyOmit<T, K> = any
+// type MyOmit<T, K extends keyof T> = {
+//   [key in (Exclude<keyof T, K>)]: T[key]
+// }
+
+type MyOmit<T, K extends keyof T> = {
+  [key in (keyof T) as key extends K ? never : key]: T[key]
+}
+
+interface Todo {
+  title: string
+  description: string
+  completed: boolean
+}
+
+type TodoPreview = MyOmit<Todo, 'description' | 'title'>
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'

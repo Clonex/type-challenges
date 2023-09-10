@@ -18,11 +18,8 @@
 
 /* _____________ Your Code Here _____________ */
 
-type Concat<T extends any[], U extends any[]> = {
-  [key in keyof T]: T[number] extends U[number] ? U[number] : T
-}
+type Concat<T extends readonly unknown[], U extends readonly unknown[]> = [...T, ...U]
 
-type Result = Concat<[1, 2], [2]> // expected to be [1, 2]
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'

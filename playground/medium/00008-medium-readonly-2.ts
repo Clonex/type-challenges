@@ -36,6 +36,10 @@
 
 type MyReadonly2<T, K> = any
 
+// type MyReadonly2<T> = {
+//   readonly [key in keyof T]: T[key]
+// }
+
 /* _____________ Test Cases _____________ */
 import type { Alike, Expect } from '@type-challenges/utils'
 
